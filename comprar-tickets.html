@@ -143,12 +143,11 @@
                 <span id="mensaje-error"></span>
 
             </div>
-
+            
             <script>
 
 
-
-                function calcularMonto() {
+            function calcularMonto() {
                     var cantidad = parseInt(document.getElementById('cantidad').value);
                     var categoria = document.getElementById('categorias').isSelected;
                     var valorEntrada = 200;
@@ -168,7 +167,23 @@
             </script>
 
             <div class=" center mb-3 col-xs-6">
-                <button type="submit" class="btn btn-success w-60 fs-5">Validar</button>
+                <button type="submit" onclick="validar()" class="btn btn-success w-60 fs-5">Validar</button>
+
+                <script>
+                function validar() {
+                    var nombre = document.getElementById('nombre').value;
+                    var apellido = document.getElementById('apellido').value;
+                    var correo = document.getElementById('correo').value;
+                    var cantidad = document.getElementById('cantidad').value;
+                    var mensajeError = document.getElementById('mensaje-error');
+
+                    if (nombre === '' || apellido === '' || correo === '' || cantidad === '') {
+                        mensajeError.innerHTML = 'Por favor, completa el campo.';
+                        return false; // Detener el envío del formulario si es necesario
+                    }
+
+                }
+                </script>
 
                 <button type="submit" name="Resumen" class="btn btn-success w-60 fs-5">Resumen</button>
             </div>
