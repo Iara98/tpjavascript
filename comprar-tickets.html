@@ -7,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODO A CODO</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
-
 
     <!--Menu-->
 
@@ -106,86 +105,132 @@
 
         </div>
 
-        <form class="row g-3" id="formulario1" method="POST">
+        <form class="row g-3" id="formulario1">
 
             <div class="col-md-6">
                 <input type="nombre" name='nombre' class="form-control" id="nombre" placeholder="Nombre"
                     required></input>
-                <span id="mensaje-error"></span>
             </div>
 
             <div class="col-md-6">
-                <input type="apellido" name='apellido' class="form-control" id="apeliido" placeholder="Apellido"
+                <input type="apellido" name='apellido' class="form-control" id="apellido" placeholder="Apellido"
                     required></input>
-                <span id="mensaje-error"></span>
             </div>
 
             <div class="mb-3">
                 <input type="correo" class="form-control" name='correo' id="correo" placeholder="Correo"
                     required></input>
-                <span id="mensaje-error"></span>
             </div>
 
             <div class="col-sm-7">
-                <input class="form-control" id="cantidad" name='cantidad' min="1" max="20"
-                    placeholder="Cantidad"></input>
-                <span id="mensaje-error"></span>
+                <input class="form-control" id="cant_entradas" name='cantidad' placeholder="Cantidad" required></input>
             </div>
 
-            <div class="form-floating col-sm">
-                <select id="categorias" class="form-select" id="floatingSelect"
+            <div class="col-sm">
+                <select id="categorias" class="form-control" id="floatingSelect"
                     aria-label="Floating label select example" required>
-                    <option>Opciones de categorias</option>
-                    <option value="1" selected>Estudiante</option>
+                    <option selected>Opciones de categorias</option>
+                    <option value="1">Estudiante</option>
                     <option value="2">Trainee</option>
                     <option value="3">Junior</option>
                 </select>
-                <span id="mensaje-error"></span>
 
             </div>
-            
-            <script>
 
+            <div id="mensaje-error" style="display: none;">
+                <p class="text-danger">Por favor, completa todos los campos.</p>
+            </div>
 
-            function calcularMonto() {
-                    var cantidad = parseInt(document.getElementById('cantidad').value);
-                    var categoria = document.getElementById('categorias').isSelected;
-                    var valorEntrada = 200;
-
-                    if(categoria === 'estudiante'){
-                    var monto = ((cantidad * valorEntrada) * 0.80);
-                    document.getElementById('monto').innerHTML = 'El monto a pagar $' + monto;
-                } else if(categoria === 'trinee'){
-                    var monto = ((cantidad * valorEntrada) * 0.50);
-                    document.getElementById('monto').innerHTML = 'El monto a pagar $' + monto;
-                } else if(categoria === 'junior'){
-                    var monto = ((cantidad * valorEntrada) * 0.80);
-                    document.getElementById('monto').innerHTML = 'El monto a pagar $' + monto;
-                }
-            }
-
-            </script>
 
             <div class=" center mb-3 col-xs-6">
-                <button type="submit" onclick="validar()" class="btn btn-success w-60 fs-5">Validar</button>
+                <button type="botonValidar" onclick="validar()" class="btn btn-success w-60 fs-5">Validar</button>
 
                 <script>
-                function validar() {
-                    var nombre = document.getElementById('nombre').value;
-                    var apellido = document.getElementById('apellido').value;
-                    var correo = document.getElementById('correo').value;
-                    var cantidad = document.getElementById('cantidad').value;
-                    var mensajeError = document.getElementById('mensaje-error');
+                    function validar() {
+                        var nombre = document.getElementById('nombre').value;
+                        var apellido = document.getElementById('apellido').value;
+                        var correo = document.getElementById('correo').value;
+                        var cantidad = document.getElementById('cantidad').value;
+                        var categoria = document.getElementById('categorias').value;
+                        var mensajeError = document.getElementById('mensaje-error');
 
-                    if (nombre === '' || apellido === '' || correo === '' || cantidad === '') {
-                        mensajeError.innerHTML = 'Por favor, completa el campo.';
-                        return false; // Detener el envío del formulario si es necesario
+                        if (nombre === "" || apellido === "" || correo === "" || cant_entradas === "" || categoria === "") {
+                            mensajeError.style.display = "block";
+                            return false;
+                        } else {
+                            mensajeError.style.display = "none";
+                            return true;
+                        }
+
                     }
-
-                }
                 </script>
 
-                <button type="submit" name="Resumen" class="btn btn-success w-60 fs-5">Resumen</button>
+                <button type="button" onclick="generarResumen()" class="btn btn-success w-60 fs-5">Resumen</button>
+
+
+                <table class="table-responsive w-100" id="resumenTable" style="display: none;">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Categoría</th>
+                        <th>Cantidad de Entradas</th>
+                        <th>Monto a Pagar</th>
+                    </tr>
+                    <tbody id="resumenBody"></tbody>
+                </table>
+
+                <script>
+                    function generarResumen() {
+                        // Obtener los valores del formulario
+                        var nombre = document.getElementById("nombre").value;
+                        var apellido = document.getElementById("apellido").value;
+                        var correo = document.getElementById("correo").value;
+                        var categoria = parseInt(document.getElementById("categorias").value);
+                        var cant_entradas = parseInt(document.getElementById("cant_entradas").value);
+
+
+                        // Calcular el monto a pagar según la categoría
+                        var valorEntrada = 200;
+                        var montoPagar;
+                        switch (categoria) {
+                            case 1:
+                                montoPagar = valorEntrada * 0.80;
+                                break;
+                            case 2:
+                                montoPagar = valorEntrada * 0.50;
+                                break;
+                            case 3:
+                                montoPagar = valorEntrada * 0.15;
+                                break;
+                            default:
+                                montoPagar = valorEntrada;
+                        }
+
+                        // Calcular el total a pagar
+                        var totalPagar = montoPagar * cant_entradas;
+
+                        // Crear una nueva fila en la tabla de resumen
+                        var resumenTable = document.getElementById("resumenTable");
+                        var resumenBody = document.getElementById("resumenBody");
+                        var newRow = resumenBody.insertRow();
+                        var cell1 = newRow.insertCell(0);
+                        var cell2 = newRow.insertCell(1);
+                        var cell3 = newRow.insertCell(2);
+                        var cell4 = newRow.insertCell(3);
+                        var cell5 = newRow.insertCell(4);
+                        var cell6 = newRow.insertCell(5);
+                        cell1.innerHTML = nombre;
+                        cell2.innerHTML = apellido;
+                        cell3.innerHTML = correo;
+                        cell4.innerHTML = categoria;
+                        cell5.innerHTML = cant_entradas;
+                        cell6.innerHTML = "$" + totalPagar;
+
+                        // Mostrar la tabla de resumen
+                        resumenTable.style.display = "table";
+                    }
+                </script>
             </div>
 
 
@@ -196,11 +241,6 @@
         </form>
 
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
 
     <div class="container">
         <footer class="py-3 my-4">
@@ -217,8 +257,6 @@
     </div>
 
 </body>
-
-</html>
 
 <!-- Optional JavaScript; choose one of the two! -->
 
