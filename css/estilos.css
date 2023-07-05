@@ -1,0 +1,50 @@
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Cambia el valor alpha (0.7) para ajustar la opacidad del fondo */
+    padding: 20px;
+    font-size: 1.5rem;
+    /* Ajusta el tamaño de fuente del texto */
+}
+
+.carousel-item img {
+    opacity: 0.4;
+    /* Cambia el valor (0.4) para ajustar la opacidad de la imagen */
+}
+
+.header-color-1 {
+    background-color: #E58129;
+
+    /* Color para el primer header */
+}
+
+.header-color-2 {
+    background-color: #57B5D3;
+    /* Color para el segundo header */
+}
+
+.header-color-3 {
+    background-color: #060E10;
+    /* Color para el tercero header */
+}
+
+.header-color-4 {
+    background-color: #D81328;
+    /* Color para el cuarto header */
+}
+
+  /* Aplica estilos a cada tarjeta */
+  .card {
+    margin-bottom: 20px; /* Agrega un margen inferior para separar las tarjetas */
+    border: 1px solid #ccc; /* Agrega un borde a las tarjetas */
+    border-radius: 10px; /* Agrega esquinas redondeadas a las tarjetas */
+  }
+  
+
+
+.footer {
+    background-color: #4DA8D5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -9,7 +9,7 @@
     <title>CODO A CODO</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 
 <body>
@@ -155,9 +155,10 @@
         <div class="card border-light mb-3 col-sm p-2" style="max-width: 18rem;">
             <img src="./img/steve.jpg" class="card-img-top" alt="">
             <div class="card-header">
-                <span class="card-badge-warning d-inline">JavaScript</span>
-                <span class="card-badge-badge-info d-inline">React</span>
+                <span class="card-badge-warning d-inline header-color-1">JavaScript</span>
+                <span class="card-badge-badge-info d-inline header-color-2">React</span>
             </div>
+
             <div class="card-body">
                 <h5 class="card-title">Steve Jobs</h5>
                 <p class="card-text">Steven Paul Jobs ​​​​fue un empresario, diseñador industrial, magnate empresarial,
@@ -169,8 +170,8 @@
         <div class="card border-light mb-3 col-sm p-2" style="max-width: 18rem;">
             <img src="./img/bill.jpg" class="card-img-top" alt="">
             <div class="card-header">
-                <span class="card-badge-warning d-inline">Negocios</span>
-                <span class="card-badge-badge-info d-inline">Startups</span>
+                <span class="card-badge-warning d-inline header-color-1">JavaScript</span>
+                <span class="card-badge-badge-info d-inline header-color-2">React</span>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Bill Gates</h5>
@@ -182,9 +183,9 @@
 
         <div class="card border-light mb-3 col-sm p-2" style="max-width: 18rem;">
             <img src="./img/ada.jpeg" class="card-img-top" alt="">
-            <div class="card-header">
-                <span class="card-badge-warning d-inline">Negocios</span>
-                <span class="card-badge-badge-info d-inline">Startups</span>
+            <div class="card-header text-white rounded-top">
+                <span class="card-badge-warning d-inline header-color-3">Negocios</span>
+                <span class="card-badge-badge-info d-inline header-color-4">Startups</span>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Ada Lovelace</h5>
@@ -197,6 +198,7 @@
         </div>
 
     </section>
+
 
     <!--Bs As Octubre-->
 
@@ -217,7 +219,8 @@
                         una ciudad-
                         condado consolidada que cubre toda la ciudad (aproximadamente 600 km de superficie).
                     </p>
-                    <a href="#" class="btn btn-outline-dark bg-transparent btn-default text-white">Conoce mas</a>
+                    <a href="#" class="btn btn-outline-dark bg-transparent btn-default text-white"
+                        style="border: 2px solid white;">Conoce mas</a>
                 </div>
             </div>
         </div>
@@ -233,55 +236,96 @@
             <p class="fs-5">Anotate como orador para dar una charla ignite. Cuentanos de que quieres hablar!</p>
         </div>
 
-        <form method="POST" action="">
+        <form id="formulario2">
 
             <div class="mb-3">
                 <input type="nombre" name='nombre' class="form-control" id="nombre" placeholder="Nombre">
-                <p class="error" id="errorNombre" ></p>
+
+                <div id="mensaje-error-nombre" style="display: none;">
+                    <p class="text-danger">Por favor, completa el campo nombre.</p>
+                </div>
             </div>
 
             <div class="mb-3">
                 <input type="apellido" name='apellido' class="form-control" id="apellido" placeholder="Apellido">
-                <p class="error" id="errorApellido" ></p>
+
+                <div id="mensaje-error-apellido" style="display: none;">
+                    <p class="text-danger">Por favor, completa el campo apellido.</p>
+                </div>
             </div>
 
             <div class="mb-3">
-                <textarea class="form-control" name='charla' id="charla" rows="3" placeholder="Sobre que quieres hablar?"></textarea>
-                <p class="error" id="errorCharla" ></p>
+                <textarea class="form-control" name='charla' id="charla" rows="3"
+                    placeholder="Sobre que quieres hablar?"></textarea>
+
+                <div id="mensaje-error-charla" style="display: none;">
+                    <p class="text-danger">Por favor, completa el campo charla.</p>
+                </div>
             </div>
 
             <h6>Recuerda incluir un titulo para tu charla</h6>
 
             <div class="mb-3">
-                <button name="enviar" onClick="validarNombre(), validarApellido(), validarCharla()" 
-                class="btn btn-success w-100 fs-5">Enviar</button>
+                <button name="enviar" onClick="validar(event)" class="btn btn-success w-100 fs-5">Enviar</button>
             </div>
 
         </form>
 
     </div>
 
-    <div class="container">
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Preguntas frecuentes</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contactanos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Prensa</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Conferencia</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terminos y condiciones</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacidad</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Estudiantes</a></li>
-            </ul>
-        </footer>
-    </div>
+    <script>
+        function validar(event) {
+            event.preventDefault(); // Evita la recarga de la página
 
-    <!-- Optional JavaScript; choose one of the two! -->
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var charla = document.getElementById('charla').value;
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+            var mensajeErrorNombre = document.getElementById('mensaje-error-nombre');
+            var mensajeErrorApellido = document.getElementById('mensaje-error-apellido');
+            var mensajeErrorCharla = document.getElementById('mensaje-error-charla');
 
-    <script src="../js/form1.js"></script>
+            mensajeErrorNombre.style.display = "none";
+            mensajeErrorApellido.style.display = "none";
+            mensajeErrorCharla.style.display = "none";
+
+            var hayErrores = false;
+
+            if (nombre === "") {
+                mensajeErrorNombre.style.display = "block";
+                hayErrores = true;
+            }
+            if (apellido === "") {
+                mensajeErrorApellido.style.display = "block";
+                hayErrores = true;
+            }
+            if (charla === "") {
+                mensajeErrorCharla.style.display = "block";
+                hayErrores = true;
+            }
+
+        }
+    </script>
+
+    <footer class="footer py-3 my-4 container-fluid">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Preguntas frecuentes</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contactanos</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Prensa</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Conferencia</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terminos y condiciones</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacidad</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Estudiantes</a></li>
+        </ul>
+    </footer>
+
+</body>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
 
 </html>
